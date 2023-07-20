@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 using WinUI3_DataTemplate_Bind_ParentProperty.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,

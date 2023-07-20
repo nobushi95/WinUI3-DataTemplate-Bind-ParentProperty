@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using WinUI3_DataTemplate_Bind_ParentProperty.Views.Data;
 
 namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
@@ -14,5 +16,11 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
             new("\ue706", "Brightness"),
             new("\ue709", "Airplane"),
         };
+
+        [RelayCommand]
+        private void ClickButton(string text)
+        {
+            Debug.WriteLine($"{text} clicked.");
+        }
     }
 }
