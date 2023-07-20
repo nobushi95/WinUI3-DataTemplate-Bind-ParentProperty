@@ -4,12 +4,28 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUI3_DataTemplate_Bind_ParentProperty.Views"
+    xmlns:vd="using:WinUI3_DataTemplate_Bind_ParentProperty.Views.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <UniformGridLayout x:Key="MyUniformGridLayout" ItemsStretch="Fill" MaximumRowsOrColumns="2"
+                           MinColumnSpacing="10" MinRowSpacing="10"/>
+        <DataTemplate x:Key="MyItemTemplate" x:DataType="vd:MainPageItemViewData">
+            <Button>
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon Glyph="{x:Bind Icon}" Margin="0, 0, 4, 0"/>
+                        <TextBox Text="{x:Bind Text}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </Page.Resources>
 
-    <Grid>
-
+    <Grid Padding="10">
+        <ItemsRepeater Layout="{StaticResource MyUniformGridLayout}"
+                       ItemTemplate="{StaticResource MyItemTemplate}"/>
     </Grid>
 </Page>
