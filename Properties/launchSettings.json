@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinUI3-DataTemplate-Bind-ParentProperty (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinUI3-DataTemplate-Bind-ParentProperty (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
