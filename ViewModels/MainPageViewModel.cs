@@ -8,10 +8,10 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
     internal partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private List<MyItemViewData> _myItemViewData;
+        private List<MyItemViewData> _myItemViewData = new();
 
         [ObservableProperty]
-        private List<MyItemViewModel> _myItemViewModels;
+        private List<MyItemViewModel> _myItemViewModels = new();
 
         [ObservableProperty]
         private bool _openInfoBar = false;
@@ -19,7 +19,7 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
         [ObservableProperty]
         private string _infoBarMessage;
 
-        public MainPageViewModel()
+        public void Initialize()
         {
             MyItemViewData = new()
             {

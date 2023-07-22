@@ -10,7 +10,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Name="MyMainPage"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="MyMainPage_Loaded">
     <Page.Resources>
         <UniformGridLayout x:Key="MyUniformGridLayout" ItemsStretch="Fill" MaximumRowsOrColumns="2"
                            MinColumnSpacing="10" MinRowSpacing="10"/>
@@ -57,13 +58,13 @@
         <Border Grid.Row="0" Style="{StaticResource MyBorderStyle}">
             <ItemsRepeater Layout="{StaticResource MyUniformGridLayout}"
                        ItemTemplate="{StaticResource MyItemViewDataTemplate}"
-                       ItemsSource="{x:Bind _viewModel.MyItemViewData}"/>
+                       ItemsSource="{x:Bind _viewModel.MyItemViewData, Mode=OneWay}"/>
         </Border>
 
         <Border Grid.Row="1" Style="{StaticResource MyBorderStyle}" Margin="0, 10, 0, 0">
             <ItemsRepeater Layout="{StaticResource MyUniformGridLayout}"
                        ItemTemplate="{StaticResource MyItemViewModelTemplate}"
-                       ItemsSource="{x:Bind _viewModel.MyItemViewModels}"/>
+                       ItemsSource="{x:Bind _viewModel.MyItemViewModels, Mode=OneWay}"/>
         </Border>
 
         <InfoBar Grid.Row="2" Margin="0, 10" Title="From MyItemViewModel"
