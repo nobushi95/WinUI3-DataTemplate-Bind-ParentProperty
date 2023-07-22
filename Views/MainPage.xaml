@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="WinUI3_DataTemplate_Bind_ParentProperty.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -27,8 +27,22 @@
     </Page.Resources>
 
     <Grid Padding="10">
-        <ItemsRepeater Layout="{StaticResource MyUniformGridLayout}"
+        <Grid.Resources>
+            <Style TargetType="Border">
+                <Setter Property="BorderBrush" Value="DarkGray"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Border>
+            <ItemsRepeater Layout="{StaticResource MyUniformGridLayout}"
                        ItemTemplate="{StaticResource MyItemTemplate}"
                        ItemsSource="{x:Bind _viewModel.ItemsViewData}"/>
+        </Border>
     </Grid>
 </Page>
