@@ -20,7 +20,7 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty
             var appWindow = AppWindow.GetFromWindowId(mainWindowId);
 
             // ウィンドウサイズを指定する
-            appWindow.Resize(new(600, 300));
+            appWindow.Resize(new(600, 350));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
 {
@@ -10,10 +12,19 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
         [ObservableProperty]
         private string _text;
 
-        public MyItemViewModel(string icon, string text)
+        private readonly Action<string> _showInfoBar;
+
+        public MyItemViewModel(string icon, string text, Action<string> showInfoBar)
         {
             Icon = icon;
             Text = text;
+            _showInfoBar = showInfoBar;
+        }
+
+        [RelayCommand]
+        private void ShowInfoBar()
+        {
+            _showInfoBar.Invoke(Text);
         }
     }
 }

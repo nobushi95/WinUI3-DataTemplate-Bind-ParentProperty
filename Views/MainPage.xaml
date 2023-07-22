@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="WinUI3_DataTemplate_Bind_ParentProperty.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -28,7 +28,7 @@
 
         <DataTemplate x:Key="MyItemViewModelTemplate" x:DataType="vm:MyItemViewModel">
             <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
-                    Command="{Binding _viewModel.ClickButtonCommand, ElementName=MyMainPage}" CommandParameter="{x:Bind Text}">
+                    Command="{x:Bind ShowInfoBarCommand}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <FontIcon Glyph="{x:Bind Icon}" Margin="0, 0, 4, 0"/>
@@ -65,5 +65,9 @@
                        ItemTemplate="{StaticResource MyItemViewModelTemplate}"
                        ItemsSource="{x:Bind _viewModel.MyItemViewModels}"/>
         </Border>
+
+        <InfoBar Grid.Row="2" Margin="0, 10" Title="From MyItemViewModel"
+                 IsOpen="{x:Bind _viewModel.OpenInfoBar, Mode=TwoWay}"
+                 Message="{x:Bind _viewModel.InfoBarMessage, Mode=OneWay}"/>
     </Grid>
 </Page>
