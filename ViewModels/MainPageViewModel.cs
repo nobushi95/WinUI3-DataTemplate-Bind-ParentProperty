@@ -17,6 +17,15 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
             new("\ue709", "Airplane"),
         };
 
+        [ObservableProperty]
+        private List<MyItemViewModel> _myItemViewModels = new()
+        {
+            new("\ue701", "Wifi"),
+            new("\ue702", "Bluetooth"),
+            new("\ue706", "Brightness"),
+            new("\ue709", "Airplane"),
+        };
+
         [RelayCommand]
         private void ClickButton(string text)
         {
