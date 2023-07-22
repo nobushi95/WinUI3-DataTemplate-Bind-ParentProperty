@@ -9,7 +9,7 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
     internal partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private List<MainPageItemViewData> _itemsViewData = new()
+        private List<MyItemViewData> _myItemViewData = new()
         {
             new("\ue701", "Wifi"),
             new("\ue702", "Bluetooth"),

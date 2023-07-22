@@ -13,7 +13,7 @@
     <Page.Resources>
         <UniformGridLayout x:Key="MyUniformGridLayout" ItemsStretch="Fill" MaximumRowsOrColumns="2"
                            MinColumnSpacing="10" MinRowSpacing="10"/>
-        <DataTemplate x:Key="MyItemTemplate" x:DataType="vd:MainPageItemViewData">
+        <DataTemplate x:Key="MyItemTemplate" x:DataType="vd:MyItemViewData">
             <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
                     Command="{Binding _viewModel.ClickButtonCommand, ElementName=MyMainPage}" CommandParameter="{x:Bind Text}">
                 <Button.Content>
@@ -42,7 +42,7 @@
         <Border>
             <ItemsRepeater Layout="{StaticResource MyUniformGridLayout}"
                        ItemTemplate="{StaticResource MyItemTemplate}"
-                       ItemsSource="{x:Bind _viewModel.ItemsViewData}"/>
+                       ItemsSource="{x:Bind _viewModel.MyItemViewData}"/>
         </Border>
     </Grid>
 </Page>
