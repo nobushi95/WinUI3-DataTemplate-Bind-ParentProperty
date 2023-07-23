@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WinUI3_DataTemplate_Bind_ParentProperty.Views.Data;
@@ -39,9 +41,11 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
         }
 
         [RelayCommand]
-        private void ClickButton(string clickedText)
+        private async Task ClickButton(string clickedText)
         {
+            var delayTask = Task.Delay(TimeSpan.FromSeconds(1));
             ShowInfoBar(clickedText);
+            await delayTask;
         }
 
         private void ShowInfoBar(string clickedText)

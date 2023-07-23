@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -22,9 +23,11 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
         }
 
         [RelayCommand]
-        private void ShowInfoBar()
+        private async Task ShowInfoBar()
         {
+            var delayTask = Task.Delay(TimeSpan.FromSeconds(1));
             _showInfoBar.Invoke(Text);
+            await delayTask;
         }
     }
 }
