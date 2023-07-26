@@ -16,25 +16,40 @@
         <UniformGridLayout x:Key="MyUniformGridLayout" ItemsStretch="Fill" MaximumRowsOrColumns="2"
                            MinColumnSpacing="10" MinRowSpacing="10"/>
         <DataTemplate x:Key="MyItemViewDataTemplate" x:DataType="vd:MyItemViewData">
-            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+            <Button Height="40" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
                     Command="{Binding _viewModel.ClickButtonCommand, ElementName=MyMainPage}" CommandParameter="{x:Bind Text}">
                 <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="{x:Bind Icon}" Margin="0, 0, 4, 0"/>
-                        <TextBlock Text="{x:Bind Text}"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="{x:Bind Icon}" Margin="0, 0, 4, 0"/>
+                        <TextBlock Grid.Column="2" Text="{x:Bind Text}"/>
+                    </Grid>
                 </Button.Content>
             </Button>
         </DataTemplate>
 
         <DataTemplate x:Key="MyItemViewModelTemplate" x:DataType="vm:MyItemViewModel">
-            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+            <Button Height="40" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
                     Command="{x:Bind ShowInfoBarCommand}">
                 <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="{x:Bind Icon}" Margin="0, 0, 4, 0"/>
-                        <TextBlock Text="{x:Bind Text}"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid Visibility="{x:Bind local:MainPage.BooleanToVisibilityConverter(IsProcessing, x:False), Mode=OneWay}">
+                            <ProgressRing Width="10" Height="10" IsActive="True"/>
+                        </Grid>
+                        <Grid Visibility="{x:Bind local:MainPage.BooleanToVisibilityConverter(IsProcessing, x:True), Mode=OneWay}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Grid.Column="0" Glyph="{x:Bind Icon}"/>
+                            <TextBlock Grid.Column="2" Text="{x:Bind Text}"/>
+                        </Grid>
+                    </Grid>
                 </Button.Content>
             </Button>
         </DataTemplate>

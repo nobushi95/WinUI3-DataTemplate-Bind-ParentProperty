@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using WinUI3_DataTemplate_Bind_ParentProperty.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -20,6 +21,15 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.Views
         private void MyMainPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             _viewModel.Initialize();
+        }
+
+        internal static Visibility BooleanToVisibilityConverter(bool value, bool inverte)
+        {
+            return inverte switch
+            {
+                false => value ? Visibility.Visible : Visibility.Collapsed,
+                true => value ? Visibility.Collapsed : Visibility.Visible,
+            };
         }
     }
 }

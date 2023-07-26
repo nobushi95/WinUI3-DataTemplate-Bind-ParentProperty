@@ -13,6 +13,9 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
         [ObservableProperty]
         private string _text;
 
+        [ObservableProperty]
+        private bool _isProcessing;
+
         private readonly Action<string> _showInfoBar;
 
         public MyItemViewModel(string icon, string text, Action<string> showInfoBar)
@@ -25,9 +28,11 @@ namespace WinUI3_DataTemplate_Bind_ParentProperty.ViewModels
         [RelayCommand]
         private async Task ShowInfoBar()
         {
+            IsProcessing = true;
             var delayTask = Task.Delay(TimeSpan.FromSeconds(1));
             _showInfoBar.Invoke(Text);
             await delayTask;
+            IsProcessing = false;
         }
     }
 }
